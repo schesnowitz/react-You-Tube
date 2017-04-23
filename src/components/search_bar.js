@@ -10,11 +10,28 @@ const SearchBar = () => {
 // class based component
 
 class SearchBar extends Component {
+	
+	constructor (props) {
+		super(props); 
+		/*component has it's own constructor super allowes us to call constructor on
+		parent class by using super
+		*/
+
+		this.state = {term: ''}; 
+	/*	
+		state is a plain JS object that exists on any component that is a class based component
+		create new object and assign it to state - property term is assigned to state
+	*/	
+	}
     render() {
 			return (
-				<input onChange={event => console.log(event.target.value)} /> // event handler gets triggered when even occurs
-				// onChange is react spacific property 
-				// no need to wrap event (event) => as only one argument
+				<div>
+				<input onChange={event => this.setState({term: event.target.value})} /> 
+				Value of the input: {this.state.term}
+				</div>
+/*
+pass in object and then set its state
+*/				
 				);
 			}
     }
