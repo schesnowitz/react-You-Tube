@@ -30,7 +30,9 @@ class SearchBar extends Component {
 				Value of the input: {this.state.term}
 				</div>
 /*
-pass in object and then set its state
+
+this way the input is telling state what the state should be
+
 */				
 				);
 			}
