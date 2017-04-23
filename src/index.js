@@ -1,24 +1,33 @@
-import React from 'react'; 
+import React, {Component} from 'react'; 
 import ReactDOM from 'react-dom'; 
 import SearchBar from './components/search_bar';
 import YTSearch from 'youtube-api-search';
-
+import VideoList from './components/video_list';
 const API_Key = 'AIzaSyBAKHFMi21weYGvvaplraES6-HLZpqUmFU';
 
 
-YTSearch( {key: API_Key, term: 'Eric Clapton'}, function(data) { // test in console
-  console.log(data);
-});
-// const App = function() {
-// return <div>Hello Steve</div>;
-// };
 
-const App = () => { // ES6 syntax
-  return (
-  <div>
-    <SearchBar />
-  </div>
-  );
+
+
+class App extends Component { 
+  constructor(props) {
+    super(props);
+    this.state = { videos: [] }; // sets state to array of videos
+
+    YTSearch( {key: API_Key, term: 'Eric Clapton'}, (videos) => { 
+      this.setState({videos});
+
+      // in es6 above line is same as  this.setState({videos: videos});
+    });
+  }
+  render () {  
+    return (
+      <div>
+        <SearchBar />
+        <VideoList videos={this.state.videos}/> {/*passing data to child*/} 
+      </div>
+    );
+  }
 };
 
 
