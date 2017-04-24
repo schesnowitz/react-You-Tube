@@ -10,7 +10,7 @@ const VideoDetail = (props) => {
   // const url = 'https://youtube.com/embed/' + props.videoId;
   const url = `https://youtube.com/embed/${videoId}` // using backticks
   return (
-    <div className='col-ms-8 video-detail'>
+    <div className='col-md-8 video-detail panel-body'> 
       <div className="embed-responsive embed-responsive-16by9">
       <iframe className='embed-responsive-item' src={url}></iframe>
       </div>
